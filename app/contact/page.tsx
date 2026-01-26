@@ -7,25 +7,36 @@ import { useState } from "react";
 export default function ContactPage() {
     const [showThankYou, setShowThankYou] = useState(false);
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const form = e.currentTarget;
+        e.stopPropagation(); // Stop the event from bubbling
 
-        // Show the thank you dialog
+        const form = e.currentTarget;
+        const formData = new FormData(form);
+
+        // Show the thank you dialog immediately
         setShowThankYou(true);
 
-        // Submit the form after showing the dialog
-        const formData = new FormData(form);
-        fetch(form.action, {
-            method: form.method,
-            body: formData,
-            headers: {
-                'Accept': 'application/json'
-            }
-        }).then(() => {
+        // Submit the form data in the background using fetch
+        try {
+            await fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                },
+                mode: 'no-cors' // Prevent CORS issues with FormSubmit
+            });
+
             // Reset form after successful submission
             form.reset();
-        });
+        } catch (error) {
+            console.error('Form submission error:', error);
+            // Still reset the form even if there's an error
+            form.reset();
+        }
+
+        return false; // Extra insurance to prevent default behavior
     };
 
     return (
@@ -74,9 +85,9 @@ export default function ContactPage() {
                             </motion.div>
 
                             {/* Sparkle Effects */}
-                            {[...Array(6)].map((_, i) => (
+                            {Array.from({ length: 6 }).map((_, i) => (
                                 <motion.div
-                                    key={i}
+                                    key={`sparkle-${i}`}
                                     initial={{ scale: 0, opacity: 0 }}
                                     animate={{
                                         scale: [0, 1, 0],
