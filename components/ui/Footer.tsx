@@ -1,5 +1,5 @@
-import { Github, Instagram, Linkedin, Twitter } from "lucide-react";
 import Link from "next/link";
+import { SocialLinks } from "@/components/ui/SocialLinks";
 
 export function Footer() {
     return (
@@ -26,20 +26,7 @@ export function Footer() {
 
                 <div>
                     <h3 className="font-semibold mb-4 text-foreground">Connect</h3>
-                    <div className="flex space-x-4">
-                        <Link href="https://instagram.com" className="bg-background p-2 rounded-full border border-border hover:border-primary hover:text-primary transition-all">
-                            <Instagram size={20} />
-                        </Link>
-                        <Link href="https://linkedin.com" className="bg-background p-2 rounded-full border border-border hover:border-primary hover:text-primary transition-all">
-                            <Linkedin size={20} />
-                        </Link>
-                        <Link href="https://twitter.com" className="bg-background p-2 rounded-full border border-border hover:border-primary hover:text-primary transition-all">
-                            <Twitter size={20} />
-                        </Link>
-                        <Link href="https://github.com" className="bg-background p-2 rounded-full border border-border hover:border-primary hover:text-primary transition-all">
-                            <Github size={20} />
-                        </Link>
-                    </div>
+                    <SocialLinks />
                 </div>
             </div>
             <div className="container mx-auto px-6 mt-12 pt-8 border-t border-border/50 text-center text-sm text-muted-foreground">
