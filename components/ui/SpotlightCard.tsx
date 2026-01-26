@@ -4,7 +4,13 @@ import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
 import { MouseEvent } from "react";
 import { cn } from "@/lib/utils";
 
-export function SpotlightCard({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+interface SpotlightCardProps {
+    children: React.ReactNode;
+    className?: string;
+    onClick?: () => void;
+}
+
+export function SpotlightCard({ children, className = "", onClick }: SpotlightCardProps) {
     const mouseX = useMotionValue(0);
     const mouseY = useMotionValue(0);
 
@@ -22,6 +28,7 @@ export function SpotlightCard({ children, className = "" }: { children: React.Re
                 className
             )}
             onMouseMove={handleMouseMove}
+            onClick={onClick}
         >
             <motion.div
                 className="pointer-events-none absolute -inset-px rounded-xl opacity-0 transition duration-300 group-hover:opacity-100"

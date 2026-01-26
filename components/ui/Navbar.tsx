@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
 const navItems = [
     { name: "Home", href: "/" },
@@ -52,6 +53,7 @@ export function Navbar() {
                             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full" />
                         </Link>
                     ))}
+                    <ThemeToggle />
                     <Link
                         href="/contact"
                         className="px-4 py-2 bg-primary text-primary-foreground rounded-full text-sm font-semibold hover:bg-primary/90 transition-transform hover:scale-105 active:scale-95"
@@ -89,6 +91,10 @@ export function Navbar() {
                                     {item.name}
                                 </Link>
                             ))}
+                            <div className="pt-4 border-t border-border flex items-center justify-between">
+                                <span className="text-sm text-muted-foreground">Theme</span>
+                                <ThemeToggle />
+                            </div>
                             <Link
                                 href="/contact"
                                 className="w-full text-center py-3 bg-primary text-primary-foreground rounded-md font-bold mt-4"
