@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Play, Image as ImageIcon, ZoomIn } from "lucide-react";
+import { SpotlightCard } from "@/components/ui/SpotlightCard";
 
 const categories = ["All", "Motion", "Painting"];
 
@@ -66,28 +67,29 @@ export default function PortfolioPage() {
                             animate={{ opacity: 1, scale: 1 }}
                             exit={{ opacity: 0, scale: 0.9 }}
                             transition={{ duration: 0.3 }}
-                            className="group relative aspect-video bg-muted rounded-xl overflow-hidden cursor-pointer"
                         >
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 flex flex-col justify-end p-6">
-                                <h3 className="text-xl font-bold text-white translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                                    {item.title}
-                                </h3>
-                                <span className="text-sm text-gray-300 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">
-                                    {item.category}
-                                </span>
-                            </div>
-
-                            {/* Placeholder Visuals since we don't have real images */}
-                            <div className="w-full h-full bg-secondary flex items-center justify-center text-muted-foreground group-hover:scale-110 transition-transform duration-500">
-                                {item.category === "Motion" ? <Play size={48} /> : <ImageIcon size={48} />}
-                            </div>
-
-                            {/* Icon Overlay */}
-                            <div className="absolute top-4 right-4 z-20 opacity-0 group-hover:opacity-100 transition-opacity">
-                                <div className="p-2 bg-black/50 backdrop-blur-md rounded-full text-white">
-                                    <ZoomIn size={20} />
+                            <SpotlightCard className="group relative aspect-video rounded-xl overflow-hidden cursor-pointer">
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 flex flex-col justify-end p-6">
+                                    <h3 className="text-xl font-bold text-white translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                        {item.title}
+                                    </h3>
+                                    <span className="text-sm text-gray-300 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">
+                                        {item.category}
+                                    </span>
                                 </div>
-                            </div>
+
+                                {/* Placeholder Visuals since we don't have real images */}
+                                <div className="w-full h-full bg-secondary flex items-center justify-center text-muted-foreground group-hover:scale-110 transition-transform duration-500">
+                                    {item.category === "Motion" ? <Play size={48} /> : <ImageIcon size={48} />}
+                                </div>
+
+                                {/* Icon Overlay */}
+                                <div className="absolute top-4 right-4 z-20 opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <div className="p-2 bg-black/50 backdrop-blur-md rounded-full text-white">
+                                        <ZoomIn size={20} />
+                                    </div>
+                                </div>
+                            </SpotlightCard>
                         </motion.div>
                     ))}
                 </AnimatePresence>

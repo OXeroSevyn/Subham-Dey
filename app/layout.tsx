@@ -4,6 +4,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Navbar } from "@/components/ui/Navbar";
 import { Footer } from "@/components/ui/Footer";
+import { ScrollProgress } from "@/components/ui/ScrollProgress";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -20,6 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className={cn(inter.variable, "font-sans antialiased bg-background text-foreground flex flex-col min-h-screen")}>
+        <ScrollProgress />
         <Navbar />
         <main className="flex-grow pt-20">
           {children}

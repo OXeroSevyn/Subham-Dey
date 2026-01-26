@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { BookOpen, Users, Star } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { SpotlightCard } from "@/components/ui/SpotlightCard";
 
 const courses = [
     {
@@ -47,42 +48,43 @@ export default function TeachingPage() {
                 {courses.map((course, index) => (
                     <motion.div
                         key={course.title}
-                        className="group relative rounded-2xl overflow-hidden bg-card border border-border"
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: index * 0.1 }}
                         whileHover={{ y: -5 }}
                     >
-                        <div className={cn("h-48 w-full bg-gradient-to-br p-6 flex flex-col justify-between", course.color)}>
-                            <span className="bg-black/30 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full w-fit">
-                                {course.category}
-                            </span>
-                            <BookOpen className="text-white/80 w-12 h-12" />
-                        </div>
-
-                        <div className="p-6 space-y-4">
-                            <h3 className="text-2xl font-bold group-hover:text-primary transition-colors">
-                                {course.title}
-                            </h3>
-                            <p className="text-muted-foreground text-sm">
-                                {course.description}
-                            </p>
-
-                            <div className="flex items-center gap-4 text-sm text-gray-400">
-                                <div className="flex items-center gap-1">
-                                    <Star className="w-4 h-4 text-yellow-500" />
-                                    <span>{course.level}</span>
-                                </div>
-                                <div className="flex items-center gap-1">
-                                    <Users className="w-4 h-4" />
-                                    <span>Students Enrolled</span>
-                                </div>
+                        <SpotlightCard className="group relative rounded-2xl overflow-hidden bg-card border border-border h-full flex flex-col">
+                            <div className={cn("h-48 w-full bg-gradient-to-br p-6 flex flex-col justify-between", course.color)}>
+                                <span className="bg-black/30 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full w-fit">
+                                    {course.category}
+                                </span>
+                                <BookOpen className="text-white/80 w-12 h-12" />
                             </div>
 
-                            <button className="w-full py-2 mt-4 rounded-md bg-secondary text-secondary-foreground font-semibold group-hover:bg-primary group-hover:text-primary-foreground transition-all">
-                                View Course Details
-                            </button>
-                        </div>
+                            <div className="p-6 space-y-4 flex-grow flex flex-col">
+                                <h3 className="text-2xl font-bold group-hover:text-primary transition-colors">
+                                    {course.title}
+                                </h3>
+                                <p className="text-muted-foreground text-sm">
+                                    {course.description}
+                                </p>
+
+                                <div className="flex items-center gap-4 text-sm text-gray-400 mt-auto">
+                                    <div className="flex items-center gap-1">
+                                        <Star className="w-4 h-4 text-yellow-500" />
+                                        <span>{course.level}</span>
+                                    </div>
+                                    <div className="flex items-center gap-1">
+                                        <Users className="w-4 h-4" />
+                                        <span>Students Enrolled</span>
+                                    </div>
+                                </div>
+
+                                <button className="w-full py-2 mt-4 rounded-md bg-secondary text-secondary-foreground font-semibold group-hover:bg-primary group-hover:text-primary-foreground transition-all">
+                                    View Course Details
+                                </button>
+                            </div>
+                        </SpotlightCard>
                     </motion.div>
                 ))}
             </div>
