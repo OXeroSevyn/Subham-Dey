@@ -1,8 +1,20 @@
 "use client";
 
+"use client";
+
 import { motion } from "framer-motion";
 import { Award, Briefcase, Smile, PenTool, Zap, Code, Palette } from "lucide-react";
 import { SkillsSection, Skill } from "@/components/ui/SkillBar";
+
+export const metadata = {
+    title: "About - Subham Dey | Motion Designer & Artist",
+    description: "Learn about Subham Dey - Motion Graphics Designer, Traditional Artist, and Creative Educator with expertise in After Effects, Painting, and Design.",
+    keywords: ["motion graphics artist", "painter", "creative educator", "after effects expert", "digital artist"],
+    openGraph: {
+        title: "About Subham Dey",
+        description: "Motion Graphics Designer, Artist & Educator",
+    },
+};
 
 const skills: Skill[] = [
     { name: "After Effects", level: 95, category: "Motion Graphics" },
