@@ -62,12 +62,26 @@ export default function ContactPage() {
                     transition={{ duration: 0.6, delay: 0.2 }}
                     className="bg-card p-8 rounded-3xl border border-border shadow-2xl"
                 >
-                    <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+                    <form
+                        className="space-y-6"
+                        action="https://formsubmit.co/subhamdey.one@gmail.com"
+                        method="POST"
+                    >
+                        {/* Honeypot for spam protection */}
+                        <input type="text" name="_honey" className="hidden" />
+
+                        {/* Disable Captcha for smoother experience (optional, can remove this line to enable it) */}
+                        <input type="hidden" name="_captcha" value="false" />
+
+                        {/* Success Page Configuration (optional, defaults to generic success page if not set) */}
+                        {/* <input type="hidden" name="_next" value="https://oxerosevyn.github.io/Subham-Dey/thanks" /> */}
                         <div className="space-y-2">
                             <label htmlFor="name" className="text-sm font-medium">Name</label>
                             <input
                                 type="text"
                                 id="name"
+                                name="name"
+                                required
                                 className="w-full px-4 py-3 rounded-lg bg-secondary/50 border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
                                 placeholder="John Doe"
                             />
@@ -78,6 +92,8 @@ export default function ContactPage() {
                             <input
                                 type="email"
                                 id="email"
+                                name="email"
+                                required
                                 className="w-full px-4 py-3 rounded-lg bg-secondary/50 border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
                                 placeholder="john@example.com"
                             />
@@ -87,6 +103,8 @@ export default function ContactPage() {
                             <label htmlFor="message" className="text-sm font-medium">Message</label>
                             <textarea
                                 id="message"
+                                name="message"
+                                required
                                 rows={4}
                                 className="w-full px-4 py-3 rounded-lg bg-secondary/50 border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all resize-none"
                                 placeholder="Tell me about your project..."
