@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, Palette, Video, PenTool } from "lucide-react";
+import { TestimonialCarousel, Testimonial } from "@/components/ui/TestimonialCarousel";
 
 const heroVariants = {
   hidden: { opacity: 0, y: 50 },
@@ -23,6 +24,41 @@ const skillItems = [
   { icon: Video, label: "Motion Graphics", color: "text-cyan-400" },
   { icon: Palette, label: "Painting / Art", color: "text-purple-400" },
   { icon: PenTool, label: "Graphic Design", color: "text-pink-400" },
+];
+
+const testimonials: Testimonial[] = [
+  {
+    id: 1,
+    name: "Priya Sharma",
+    role: "Student",
+    company: "Motion Graphics Course",
+    content: "Subham's teaching style is incredible! He breaks down complex After Effects techniques into simple, easy-to-understand steps. Within 3 months, I went from beginner to creating professional motion graphics for clients.",
+    rating: 5,
+  },
+  {
+    id: 2,
+    name: "Arjun Patel",
+    role: "Creative Director",
+    company: "Digital Wave Studios",
+    content: "Working with Subham has been a game-changer for our studio. His motion graphics work is exceptional, and he always delivers beyond expectations. His attention to detail and creative vision are unmatched.",
+    rating: 5,
+  },
+  {
+    id: 3,
+    name: "Sneha Reddy",
+    role: "Student",
+    company: "Digital Art Masterclass",
+    content: "The best art instructor I've ever had! Subham not only teaches technical skills but also helps develop your artistic vision. His feedback is always constructive and encouraging.",
+    rating: 5,
+  },
+  {
+    id: 4,
+    name: "Rahul Mehta",
+    role: "Marketing Manager",
+    company: "TechVision Inc",
+    content: "Subham created stunning explainer videos for our product launches. His work significantly improved our engagement rates. Professional, creative, and always on time!",
+    rating: 5,
+  },
 ];
 
 export default function Home() {
@@ -78,6 +114,23 @@ export default function Home() {
             About Me
           </Link>
         </motion.div>
+      </motion.section>
+
+      {/* Testimonials Section */}
+      <motion.section
+        className="max-w-6xl w-full mt-32 mb-20"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7 }}
+      >
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-5xl font-bold mb-4">What People Say</h2>
+          <p className="text-muted-foreground text-lg">
+            Hear from students and clients I've worked with
+          </p>
+        </div>
+        <TestimonialCarousel testimonials={testimonials} />
       </motion.section>
 
       {/* Abstract Background Elements */}

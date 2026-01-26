@@ -2,6 +2,18 @@
 
 import { motion } from "framer-motion";
 import { Award, Briefcase, Smile, PenTool, Zap, Code, Palette } from "lucide-react";
+import { SkillsSection, Skill } from "@/components/ui/SkillBar";
+
+const skills: Skill[] = [
+    { name: "After Effects", level: 95, category: "Motion Graphics" },
+    { name: "Premiere Pro", level: 90, category: "Video Editing" },
+    { name: "Photoshop", level: 92, category: "Design" },
+    { name: "Illustrator", level: 88, category: "Design" },
+    { name: "Cinema 4D", level: 80, category: "3D" },
+    { name: "Oil Painting", level: 85, category: "Fine Arts" },
+    { name: "Digital Painting", level: 90, category: "Fine Arts" },
+    { name: "Typography", level: 87, category: "Design" },
+];
 
 export default function AboutPage() {
     return (
@@ -81,6 +93,11 @@ export default function AboutPage() {
                         </motion.div>
                     ))}
                 </div>
+            </section>
+
+            {/* Skill Progress Bars */}
+            <section className="max-w-3xl mx-auto">
+                <SkillsSection skills={skills} title="Technical Proficiency" />
             </section>
 
             {/* Experience / Timeline or Stats could go here */}
